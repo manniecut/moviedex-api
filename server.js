@@ -11,6 +11,8 @@ app.use(morgan('dev'))
 app.use(helmet())
 app.use(cors())
 
+/******************** Validation ***************************/
+
 app.use(function validateBearerToken(req, res, next) {
     const apiToken = process.env.API_TOKEN
     const authToken = req.get('Authorization')
@@ -42,15 +44,9 @@ app.get('/movie', function handleGetMovies(req, res) {
     if (req.query.avg_vote) {
         response = response.filter(movie =>
             Number(movie.avg_vote) >= Number(req.query.avg_vote))
-
     }
 
     res.json(response)
-})
-
-
-app.get('/genres', function handleGetGenres(req, res) {
-    res.json(validGenres)
 })
 
 
