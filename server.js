@@ -6,9 +6,19 @@ const app = express()
 
 app.use(morgan('dev'))
 
-app.use((req, res) => {
-    res.send('lolol')
-})
+const validGenres = [`Animation`, `Action`, `Adventre`,
+                        `Biography`, `Comedy`, `Crime`,
+                        `Documentary`, `Drama`, `Fantasy`,
+                        `Grotesque`, `History`, `Horror`,
+                        `Musical`, `Romantic`, `Spy`,
+                        `Thriller`, `War`, `Western`]
+
+function handleGetGenres(req, res) {
+    res.json(validGenres)
+
+}
+
+app.get('/genres', handleGetGenres)
 
 const PORT = 8000
 
