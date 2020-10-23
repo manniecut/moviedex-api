@@ -21,15 +21,6 @@ app.use(function validateBearerToken(req, res, next) {
     next()
 })
 
-const validGenres = [
-    `Animation`, `Action`, `Adventre`,
-    `Biography`, `Comedy`, `Crime`,
-    `Documentary`, `Drama`, `Fantasy`,
-    `Grotesque`, `History`, `Horror`,
-    `Musical`, `Romantic`, `Spy`,
-    `Thriller`, `War`, `Western`
-];
-
 
 
 /****************** GET HANDLING ***************************/
@@ -48,11 +39,11 @@ app.get('/movie', function handleGetMovies(req, res) {
         )
     }
 
-    /*if(req.query.avg_vote) {
+    if (req.query.avg_vote) {
         response = response.filter(movie =>
-            movie.avg_vote.toLowerCase().includes(req.query.genre.toLowerCase())
-        )
-    }*/
+            Number(movie.avg_vote) >= Number(req.query.avg_vote))
+
+    }
 
     res.json(response)
 })
