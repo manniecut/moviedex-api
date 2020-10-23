@@ -1,4 +1,4 @@
-/*
+/********************************************************************************************
   Requirements
     +Users can search for Movies by genre, country or avg_vote
     --The endpoint is GET /movie
@@ -15,5 +15,4 @@
 
     +The endpoint should have general security in place such as best practice headers and support for CORS.
 
-*/
-const express = require('express');
+***********************************************************************************************/
